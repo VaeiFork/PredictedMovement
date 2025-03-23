@@ -6,6 +6,7 @@
 #include "ModifierTypes.h"
 #include "PredTypes.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "Implementation/TurnInPlaceMovement.h"
 #include "System/PredictedMovementVersioning.h"
 #include "PredMovement.generated.h"
 
@@ -68,7 +69,7 @@ private:
  * However, compressed flags are a lot cheaper so we wouldn't typically use move containers for a boolean
  */
 UCLASS()
-class PREDICTEDMOVEMENT_API UPredMovement : public UCharacterMovementComponent
+class PREDICTEDMOVEMENT_API UPredMovement : public UTurnInPlaceMovement
 {
 	GENERATED_BODY()
 	

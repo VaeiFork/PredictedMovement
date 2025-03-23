@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PredTypes.h"
-#include "GameFramework/Character.h"
+#include "Implementation/TurnInPlaceCharacter.h"
 #include "PredCharacter.generated.h"
 
 struct FGameplayTag;
@@ -14,7 +14,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(FStaminaChangeEvent, float, Stamina
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FStaminaEvent);
 
 UCLASS()
-class PREDICTEDMOVEMENT_API APredCharacter : public ACharacter
+class PREDICTEDMOVEMENT_API APredCharacter : public ATurnInPlaceCharacter
 {
 	GENERATED_BODY()
 
