@@ -12,7 +12,9 @@ public class PredictedMovement : ModuleRules
 			new string[]
 			{
 				"Core", 
-				"GameplayTags",
+				"GameplayTags", 
+				"ActorTurnInPlace",
+				"ModularGameplayActors",
 			}
 			);
 		

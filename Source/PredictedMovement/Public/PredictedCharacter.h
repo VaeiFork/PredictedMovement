@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameplayTagContainer.h"
 #include "PredTypes.h"
-#include "GameFramework/Character.h"
+#include "Implementation/TurnInPlaceCharacter.h"
 #include "Modifier/ModifierTypes.h"
 #include "PredictedCharacter.generated.h"
 
@@ -27,7 +27,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE(FStaminaEvent);
  * Features: Prone, Stamina, AimDownSights
  */
 UCLASS()
-class PREDICTEDMOVEMENT_API APredictedCharacter : public ACharacter
+class PREDICTEDMOVEMENT_API APredictedCharacter : public ATurnInPlaceCharacter
 {
 	GENERATED_BODY()
 

@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "PredTypes.h"
-#include "GameFramework/CharacterMovementComponent.h"
+#include "Implementation/TurnInPlaceMovement.h"
 #include "Modifier/ModifierImpl.h"
 #include "Modifier/ModifierTypes.h"
 #include "System/PredictedMovementVersioning.h"
@@ -113,7 +113,7 @@ private:
  * Features: Prone, Stamina, AimDownSights
  */
 UCLASS()
-class PREDICTEDMOVEMENT_API UPredictedCharacterMovement : public UCharacterMovementComponent
+class PREDICTEDMOVEMENT_API UPredictedCharacterMovement : public UTurnInPlaceMovement
 {
 	GENERATED_BODY()
 	
