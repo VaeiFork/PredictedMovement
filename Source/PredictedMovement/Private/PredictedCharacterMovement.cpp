@@ -114,13 +114,6 @@ UPredictedCharacterMovement::UPredictedCharacterMovement(const FObjectInitialize
 	
 	NetworkStaminaCorrectionThreshold = 2.f;
 
-	// Aim Down Sights
-	MaxWalkSpeedAimingDownSightsScalar = 0.333f;
-	MaxAccelerationAimingDownSightsScalar = 0.666f;
-	BrakingDecelerationAimingDownSightsScalar = 0.75f;
-	GroundFrictionAimingDownSightsScalar = 1.f;
-	BrakingFrictionAimingDownSightsScalar = 1.f;
-
 	// Crouch
 	SetCrouchedHalfHeight(54.f);
 	MaxAccelerationCrouched = 384.f;
@@ -414,64 +407,58 @@ float UPredictedCharacterMovement::GetGaitSpeedFactor() const
 	 */
 	
 	const float StaminaDrained = IsStaminaDrained() ? MaxWalkSpeedScalarStaminaDrained : 1.f;
-	const float AimingDownSights = IsAimingDownSights() ? MaxWalkSpeedAimingDownSightsScalar : 1.f;
 	const float BoostScalar = GetBoostSpeedScalar();
 	const float SlowScalar = GetSlowSpeedScalar();
 	const float SnareScalar = GetSnareSpeedScalar();
-	return StaminaDrained * AimingDownSights * BoostScalar * SlowScalar * SnareScalar;
+	return StaminaDrained * BoostScalar * SlowScalar * SnareScalar;
 }
 
 float UPredictedCharacterMovement::GetMaxAccelerationScalar() const
 {
 	const float StaminaDrained = IsStaminaDrained() ? MaxAccelerationScalarStaminaDrained : 1.f;
-	const float AimingDownSights = IsAimingDownSights() ? MaxAccelerationAimingDownSightsScalar : 1.f;
 	const float BoostScalar = GetBoostAccelScalar();
 	const float SlowScalar = GetSlowAccelScalar();
 	const float SnareScalar = GetSnareAccelScalar();
 	const float HasteScalar = IsSprintingInEffect() ? GetHasteAccelScalar() : 1.f;
-	return StaminaDrained * AimingDownSights * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
+	return StaminaDrained * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
 }
 
 float UPredictedCharacterMovement::GetMaxSpeedScalar() const
 {
 	const float StaminaDrained = IsStaminaDrained() ? MaxWalkSpeedScalarStaminaDrained : 1.f;
-	const float AimingDownSights = IsAimingDownSights() ? MaxWalkSpeedAimingDownSightsScalar : 1.f;
 	const float BoostScalar = GetBoostSpeedScalar();
 	const float SlowScalar = GetSlowSpeedScalar();
 	const float SnareScalar = GetSnareSpeedScalar();
 	const float HasteScalar = IsSprintingInEffect() ? GetHasteSpeedScalar() : 1.f;
-	return StaminaDrained * AimingDownSights * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
+	return StaminaDrained * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
 }
 
 float UPredictedCharacterMovement::GetMaxBrakingDecelerationScalar() const
 {
 	const float StaminaDrained = IsStaminaDrained() ? MaxBrakingDecelerationScalarStaminaDrained : 1.f;
-	const float AimingDownSights = IsAimingDownSights() ? BrakingDecelerationAimingDownSightsScalar : 1.f;
 	const float BoostScalar = GetBoostBrakingScalar();
 	const float SlowScalar = GetSlowBrakingScalar();
 	const float SnareScalar = GetSnareBrakingScalar();
 	const float HasteScalar = IsSprintingInEffect() ? GetHasteBrakingScalar() : 1.f;
-	return StaminaDrained * AimingDownSights * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
+	return StaminaDrained * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
 }
 
 float UPredictedCharacterMovement::GetGroundFrictionScalar() const
 {
-	const float AimingDownSights = IsAimingDownSights() ? GroundFrictionAimingDownSightsScalar : 1.f;
 	const float BoostScalar = GetBoostGroundFrictionScalar();
 	const float SlowScalar = GetSlowGroundFrictionScalar();
 	const float SnareScalar = GetSnareGroundFrictionScalar();
 	const float HasteScalar = IsSprintingInEffect() ? GetHasteGroundFrictionScalar() : 1.f;
-	return AimingDownSights * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
+	return BoostScalar * SlowScalar * SnareScalar * HasteScalar;
 }
 
 float UPredictedCharacterMovement::GetBrakingFrictionScalar() const
 {
-	const float AimingDownSights = IsAimingDownSights() ? BrakingFrictionAimingDownSightsScalar : 1.f;
 	const float BoostScalar = GetBoostBrakingFrictionScalar();
 	const float SlowScalar = GetSlowBrakingFrictionScalar();
 	const float SnareScalar = GetSnareBrakingFrictionScalar();
 	const float HasteScalar = IsSprintingInEffect() ? GetHasteBrakingFrictionScalar() : 1.f;
-	return AimingDownSights * BoostScalar * SlowScalar * SnareScalar * HasteScalar;
+	return BoostScalar * SlowScalar * SnareScalar * HasteScalar;
 }
 
 float UPredictedCharacterMovement::GetGravityZScalar() const
